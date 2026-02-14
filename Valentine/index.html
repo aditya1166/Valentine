@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine's Day ❤🌹</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* 🌸 BACKGROUND TEXTURE */
+body {
+  margin: 0;
+  height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.15), transparent 40%),
+    linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+/*Heading*/
+/*.heading{
+    position:relative;
+    z-index: 2;
+    align-items: top ;
+}*/
+
+/* 💎 GLASS CARD */
+.page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fade 1s ease;
+  padding: 45px 60px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 55px 70px rgba(0,0,0,0.35);
+}
+
+.page.active { display: flex; }
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ✨ TEXT GLOW */
+h1, h2 {
+  text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* 💖 3D BUTTON */
+.btn-3d {
+  padding: 20px 45px;
+  font-size: 22px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(145deg, #ff5f6d, #ffc371);
+  box-shadow: 0 10px 0 #c94b4b, 0 20px 35px rgba(0,0,0,0.35);
+  color: white;
+  cursor: pointer;
+}
+
+.btn-3d:active {
+  transform: translateY(6px);
+  box-shadow: 0 5px 0 #c94b4b;
+}
+
+/* 💌 INPUT */
+input {
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  width: 260px;
+  margin: 25px 0 40px;
+  text-align: center;
+}
+
+/* ❤️ HEART BUTTON */
+.heart-btn {
+  width: 120px;
+  height: 110px;
+  background: linear-gradient(145deg, #ff2f68, #ff6f91);
+  position: relative;
+  transform: rotate(-45deg);
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.4),
+    0 0 25px rgba(255,80,130,0.8);
+  animation: pulse 1.8s infinite;
+}
+
+.heart-btn::before,
+.heart-btn::after {
+  content: "";
+  width: 120px;
+  height: 110px;
+  background: inherit;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart-btn::before { top: -60px; left: 0; }
+.heart-btn::after { left: 60px; top: 0; }
+
+@keyframes pulse {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.15); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* 💕 FLOATING HEARTS */
+.floating-hearts span {
+  position: absolute;
+  bottom: -40px;
+  font-size: 22px;
+  animation: floatUp 9s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
+
+/* 📸 PHOTO ALBUM */
+.album {
+  width: 260px;
+  height: 260px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: spin 18s linear infinite;
+}
+
+.album img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 18px;
+  left: 30px;
+  top: 30px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.album img:hover {
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+@keyframes spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+/* ❌ POPUP */
+.popup {
+  position: fixed;
+  background: rgba(0,0,0,0.85);
+  padding: 20px 40px;
+  border-radius: 15px;
+  display: none;
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<div class="floating-hearts">
+  <span style="left:10%;animation-delay:0s;">❤️</span>
+  <span style="left:25%;animation-delay:2s;">💖</span>
+  <span style="left:40%;animation-delay:4s;">💕</span>
+  <span style="left:60%;animation-delay:1s;">💘</span>
+  <span style="left:75%;animation-delay:3s;">💞</span>
+  <span style="left:90%;animation-delay:5s;">❤️</span>
+</div>
+
+<!-- PAGE 1 -->
+ <!--<div class="heading">
+    <font size="+6" face="Freestyle Script">Happy Valentine Day ❤🌹💋</font>
+ </div>-->
+<div class="page active" id="p1">
+  <img src="Welxome.gif" width="120"><br><br>
+  <button class="btn-3d" onclick="goPage(2)">Click Me</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <img src="hug.gif" width="100"><br><br>
+  <h1 id="typing"></h1>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <h2>Please enter your name<br>miss Darling...</h2>
+  <input type="text" id="name" placeholder="Your Name">
+  <br>
+  <br>
+  <button class="heart-btn" onclick="submitName()"></button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+  <img src="Question.gif" width="100"><br><br>
+  <h1 id="welcomeText"></h1>
+  <h2>Do you Love me ?</h2>
+  <button class="btn-3d" onclick="goPage(5)">Yess 💖</button><br><br>
+  <button class="btn-3d" onclick="showError()">Noo 😜</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="p5">
+  <h2>Our Beautiful Memories ❤️</h2>
+  <div class="album" id="album">
+    <img src="IMG-20260213-WA0050.jpg" style="transform: rotateY(0deg) translateZ(300px);">
+    <img src="IMG-20260129-WA0032.jpg" style="transform: rotateY(60deg) translateZ(300px);">
+    <img src="IMG-20260123-WA0035.jpg" style="transform: rotateY(120deg) translateZ(300px);">
+    <img src="IMG-20251218-WA0009.jpg" style="transform: rotateY(180deg) translateZ(300px);">
+    <img src="IMG-20251126-WA0026.jpg" style="transform: rotateY(240deg) translateZ(300px);">
+    <img src="IMG-20260101-WA0009.jpg" style="transform: rotateY(300deg) translateZ(300px);">
+  </div>
+  <p style="margin-top:40px;">You are my forever favorite ❤️</p>
+</div>
+
+<div class="popup" id="popup">❌ Noo is not working, Error !</div>
+
+<script>
+let text = "Habibi Welcome to MyHeart ❤️\n\nPlease enter your name miss Darling...";
+let index = 0;
+
+function goPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('p' + n).classList.add('active');
+  if (n === 2) typeText();
+}
+
+function typeText() {
+  let el = document.getElementById("typing");
+  el.innerHTML = "";
+  index = 0;
+  let interval = setInterval(() => {
+    el.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+    index++;
+    if (index >= text.length) {
+      clearInterval(interval);
+      setTimeout(() => goPage(3), 1200);
+    }
+  }, 80);
+}
+
+function submitName() {
+  let name = document.getElementById("name").value || "My Love";
+  document.getElementById("welcomeText").innerText =
+    `Nice to see you ${name} Darling ❤️`;
+  goPage(4);
+}
+
+function showError() {
+  let pop = document.getElementById("popup");
+  pop.style.display = "block";
+  setTimeout(() => pop.style.display = "none", 2000);
+}
+
+/* PHOTO ZOOM */
+const album = document.getElementById("album");
+let rotating = true;
+let zoomedImg = null;
+
+album.querySelectorAll('img').forEach(img => {
+  img.addEventListener('click', () => {
+    if(rotating){
+      album.style.animationPlayState = "paused";
+      img.style.transform += " scale(2.5)";
+      zoomedImg = img;
+    } else {
+      album.style.animationPlayState = "running";
+      if(zoomedImg){
+        zoomedImg.style.transform =
+          zoomedImg.style.transform.replace(" scale(2.5)", "");
+        zoomedImg = null;
+      }
+    }
+    rotating = !rotating;
+  });
+});
+</script>
+
+</body>
+</html>
